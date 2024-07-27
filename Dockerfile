@@ -7,8 +7,11 @@ FROM node:22.5-alpine
 WORKDIR /app
 # Copy package.json and package-lock.json
 COPY package*.json ./
+# # Install dependencies
+# RUN npm install
+
 # Install dependencies
-RUN npm install
+RUN npm ci
 # Copy the rest of the application
 COPY . .
 # Build the React application
