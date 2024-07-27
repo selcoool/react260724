@@ -1,26 +1,20 @@
 # Use the official Node.js image.
 FROM node:22.5-alpine
 
-# Thiết lập thư mục làm việc trong container
+# # Base image
+# FROM node:14-alpine
+# Set working directory
 WORKDIR /app
-
-# Sao chép package.json và package-lock.json vào thư mục làm việc
+# Copy package.json and package-lock.json
 COPY package*.json ./
-
-# # Cài đặt các phụ thuộc
-# RUN npm install
-
-# Cài đặt các phụ thuộc
-RUN npm ci
-
-# Sao chép mã nguồn của ứng dụng vào container
+# Install dependencies
+RUN npm install
+# Copy the rest of the application
 COPY . .
-
-# # Xây dựng ứng dụng React
-# RUN npm run build
-
-# # Mở cổng 3000 để container có thể lắng nghe
-# EXPOSE 3000
-
-# # Chạy ứng dụng
-# CMD ["npm", "start"]
+# Build the React application
+RUN npm run build
+# Serve the application using a static file server
+RUN npm install -g serve
+CMD ["serve", "-s", "build"]
+# Expose port 3000
+EXPOSE 3000
