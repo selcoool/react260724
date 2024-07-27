@@ -3,7 +3,7 @@ function HomePage() {
 
     return (
       <div>
-      Home Page Tran Minh Thanh
+      Home Page created by Tran Minh Thanh
       </div>
     )
   }
