@@ -3,7 +3,7 @@ function HomePage() {
 
     return (
       <div>
-      Home Page created by Tran Minh Thanh
+      Home Page was created by Tran Minh Thanh at 06:00
       </div>
     )
   }
